@@ -1,4 +1,4 @@
-package org.dhana.linkedlist;
+package org.dhana.linkedlist.singlelinkedlist;
 
 import java.util.Arrays;
 
