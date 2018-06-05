@@ -18,6 +18,7 @@ public class JumpSearch {
                     if (numbers[k] == ele) {
                         return k;
                     }
+                    k++;
                 }
                 return -1;
             } else if (ele == numbers[i]) {
@@ -39,7 +40,7 @@ public class JumpSearch {
 
     public static void main(String[] args) {
         JumpSearch jumpSearch = new JumpSearch();
-        int[] numbers = IntStream.of(2, 4, 6, 8, 10, 33, 34, 66, 77).toArray();
+        int[] numbers = IntStream.range(1, 101).toArray();
         int index = jumpSearch.search(numbers, 77);
 
         if (index == -1) {

@@ -8,7 +8,7 @@ public class BinarySearch {
             return -1;
         }
 
-        int mid = (low + high) / 2;
+        int mid = low + (high - low) / 2;
 
         if (numbers[mid] == x) {
             return mid;
