@@ -117,7 +117,7 @@ public class LinkedList {
                 return current.value;
             }
 
-            pointer ++;
+            pointer++;
             previous = current;
             current = current.next;
         }
@@ -126,7 +126,25 @@ public class LinkedList {
         return null;
     }
 
-    public void update(final int x, final int y) {
+    public boolean update(final int x, final int y) {
+        if (head == null) {
+            System.out.println("There are no elements in the linked list.");
+            return false;
+        }
+
+        Node i = head;
+
+        while (i != null) {
+            if (i.value == x) {
+                i.value = y;
+                return true;
+            }
+
+            i = i.next;
+        }
+
+        System.out.println("There is no element " + x);
+        return false;
 
     }
 
@@ -144,12 +162,12 @@ public class LinkedList {
     }
 
     public void removeAll() {
-       head = null;
+        head = null;
     }
 
     public int size() {
         int i = 0;
-        for (; head != null; head = head.next, i++);
+        for (; head != null; head = head.next, i++) ;
         return i;
     }
 
@@ -208,6 +226,6 @@ public class LinkedList {
         ll.insertInTheFront(40);
         ll.list();
 
-        System.out.format("Middle of linked list is %s \n" , ll.middleElement());
+        System.out.format("Middle of linked list is %s \n", ll.middleElement());
     }
 }

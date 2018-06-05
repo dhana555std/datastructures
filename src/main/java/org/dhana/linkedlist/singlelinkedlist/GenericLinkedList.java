@@ -2,7 +2,7 @@ package org.dhana.linkedlist.singlelinkedlist;
 
 import java.util.Arrays;
 
-class GenericLinkedList<T> {
+public class GenericLinkedList<T> {
     private Node head;
 
     protected class Node {
@@ -12,10 +12,22 @@ class GenericLinkedList<T> {
         Node(final T value) {
             this.value = value;
         }
+
+        public void setValue(T value) {
+            this.value = value;
+        }
+
+        public T getValue() {
+            return value;
+        }
     }
 
     protected Node getHead() {
         return head;
+    }
+
+    protected void setHead(Node head) {
+        this.head = head;
     }
 
     public void insertInTheFront(final T x) {
@@ -210,9 +222,42 @@ class GenericLinkedList<T> {
             }
         }
 
-        System.out.println("No index " + index );
+        System.out.println("No index " + index);
 
         return null;
+    }
+
+    public void reverse() {
+        if (head == null) {
+            System.out.println("There are no elements in the linked list.");
+            return;
+        }
+
+        Node newHead = null;
+
+        while (head != null) {
+            Node temp = head.next;
+            head.next = null;
+
+            if (newHead == null) {
+                newHead = head;
+            } else {
+                head.next = newHead;
+                newHead = head;
+            }
+
+            head = temp;
+        }
+
+        head = newHead;
+    }
+
+    public static void main(String[] args) {
+        GenericLinkedList<String> ll = new GenericLinkedList<>();
+        Arrays.asList("One", "Two", "Three", "Four", "Five", "Six").forEach(ll::insertInTheEnd);
+
+        ll.reverse();
+        ll.list();
     }
 
 }
